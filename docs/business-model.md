@@ -2,7 +2,7 @@
 
 ## Classification
 
-- Repository: `cloud-itonami-7500`
+- Repository: `cloud-itonami-isic-7500`
 - ISIC Rev.5: `7500`
 - Activity: veterinary activities -- diagnosis, treatment and care of animals by licensed veterinary professionals
 - Social impact: professional standards, data sovereignty, transparent audit

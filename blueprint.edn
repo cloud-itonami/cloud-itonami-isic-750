@@ -1,4 +1,4 @@
-{:itonami.blueprint/id "cloud-itonami-7500"
+{:itonami.blueprint/id "cloud-itonami-isic-7500"
  :itonami.blueprint/name "Veterinary activities"
  :itonami.blueprint/isic-rev5 "7500"
  :itonami.blueprint/domain :professional/veterinary

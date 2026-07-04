@@ -1,4 +1,4 @@
-# cloud-itonami-7500
+# cloud-itonami-isic-7500
 
 Open Business Blueprint for **ISIC Rev.5 7500**: Veterinary activities.
 

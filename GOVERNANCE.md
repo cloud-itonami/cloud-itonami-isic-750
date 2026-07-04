@@ -1,6 +1,6 @@
 # Governance
 
-`cloud-itonami-7500` is an OSS open-business blueprint for veterinary activities -- diagnosis, treatment and care of animals by licensed veterinary professionals.
+`cloud-itonami-isic-7500` is an OSS open-business blueprint for veterinary activities -- diagnosis, treatment and care of animals by licensed veterinary professionals.
 Governance covers both the capability layer and the operator model.
 
 ## Maintainers
