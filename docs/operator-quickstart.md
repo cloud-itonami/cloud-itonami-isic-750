@@ -1,6 +1,6 @@
 # Operator Quickstart — Veterinary activities
 
-Shortest path from clone to a verified local dry-run for **ISIC 7500** (`cloud-itonami-isic-750`).
+Shortest path from clone to a verified local dry-run for **ISIC 7500** (`cloud-itonami-isic-7500`).
 
 ## Prerequisites
 
@@ -13,8 +13,8 @@ No invented metrics; this is a governed OSS blueprint, not a hosted SaaS demo.
 ## 1. Clone
 
 ```bash
-git clone https://github.com/cloud-itonami/cloud-itonami-isic-750.git
-cd cloud-itonami-isic-750
+git clone https://github.com/cloud-itonami/cloud-itonami-isic-7500.git
+cd cloud-itonami-isic-7500
 ```
 
 ## 2. Run tests
