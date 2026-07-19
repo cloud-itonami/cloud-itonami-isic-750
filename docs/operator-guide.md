@@ -2,22 +2,29 @@
 
 ## First Deployment
 
-1. Register the operator's license, jurisdiction and responsible principals.
-2. Import historical engagements/clients and counterparties.
+1. Register the practice's location(s), resources (exam rooms, kennel/boarding
+   runs, procedure bays) and responsible practice manager.
+2. Import the resource directory (which rooms/runs exist, their
+   registered/verified status).
 3. Run read-only validation of existing records against this blueprint's
    contracts.
-4. Configure the Veterinary Care Governor's hold/escalation policy.
+4. Configure the VetOps Governor's hold/escalation policy.
 5. Publish a dry-run operation and audit export.
 
 ## Minimum Production Controls
 
-- spec-basis citation required before any customer-facing determination
-- administering a treatment, prescription or procedure always requires a human sign-off
-- audit export for every hold, approval and delivery
+- a resource must be independently registered AND verified before any
+  proposal targeting it may commit or escalate
+- flagging a facility safety concern always requires a human sign-off
+- audit export for every hold, approval and commit
 - backup manual process for governor/system outage
+- diagnosis, treatment, medication/vaccine/anesthesia administration,
+  surgical/dental procedures and euthanasia decisions are permanently out of
+  scope for this actor -- route those through
+  `cloud-itonami-isic-7500`'s Veterinary Care Governor instead
 
 ## Certification
 
-Certified operators must prove engagement-record integrity, governor
+Certified operators must prove resource-record integrity, governor
 independence, evidence-backed reporting and human review for every
 high-stakes action.

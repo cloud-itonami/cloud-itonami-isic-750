@@ -1,6 +1,6 @@
-# Operator Quickstart — Veterinary activities
+# Operator Quickstart — Veterinary activities, Operations Coordination
 
-Shortest path from clone to a verified local dry-run for **ISIC 7500** (`cloud-itonami-isic-7500`).
+Shortest path from clone to a verified local dry-run for **ISIC group 750** (`cloud-itonami-isic-750`).
 
 ## Prerequisites
 
@@ -13,14 +13,14 @@ No invented metrics; this is a governed OSS blueprint, not a hosted SaaS demo.
 ## 1. Clone
 
 ```bash
-git clone https://github.com/cloud-itonami/cloud-itonami-isic-7500.git
-cd cloud-itonami-isic-7500
+git clone https://github.com/cloud-itonami/cloud-itonami-isic-750.git
+cd cloud-itonami-isic-750
 ```
 
 ## 2. Run tests
 
 ```bash
-clojure -M:test
+clojure -M:dev:test
 ```
 
 Expect green if maturity is `implemented`. Fix failures before operating.
@@ -35,8 +35,8 @@ Publish: enable GitHub Pages on `main` `/docs`, or any static host.
 
 ## 4. Where the Governor sits
 
-- Blueprint governor key: `veterinary-care-governor`
-- Likely source path: `veterinary.governor.cljc`
+- Blueprint governor key: `vetops-governor`
+- Likely source path: `vetops.governor.cljc`
 - Pattern: advise → govern → phase-gate → commit | escalate | hold (itonami actor / ADR-2607011000)
 
 ## 5. Claim / go-live

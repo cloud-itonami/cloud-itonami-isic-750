@@ -1,4 +1,4 @@
-<html><head><meta charset="utf-8"><title>cloud-itonami-isic-7500 &middot; veterinary activities</title><style>
+<html><head><meta charset="utf-8"><title>cloud-itonami-isic-750 &middot; veterinary activities coordination</title><style>
 table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .ok { color: #137a3f; }
 body { font-family: system-ui,-apple-system,sans-serif; margin: 0; color: #1a1a1a; background: #fafafa; }
@@ -17,34 +17,33 @@ header.bar .badge { margin-left: auto; font-size: 12px; color: #666; }
 code { font-size: 12px; background: #f4f4f4; padding: 1px 4px; border-radius: 3px; }
 </style></head><body>
 <header class="bar">
-  <h1>Veterinary activities (ISIC 7500) — Operator Console</h1>
-  <span class="badge">read-only sample · governor-gated · never administers a real treatment or issues a signed certificate directly</span>
+  <h1>Veterinary activities administrative coordination (ISIC 750) — Operator Console</h1>
+  <span class="badge">read-only sample · governor-gated · never touches diagnosis/treatment/medication/animal care</span>
 </header>
 <main>
   <section class="card">
-    <h2>Cases</h2>
-    <p class="muted">Demo snapshot — build-time-generated from <code>veterinary.store</code> via <code>veterinary.render-html</code> (<code>clojure -M:dev:render-html</code>), regenerated nightly.</p>
+    <h2>Resources</h2>
+    <p class="muted">Demo snapshot — build-time-generated from <code>vetops.store</code> via <code>vetops.render-html</code> (<code>clojure -M:dev:render-html</code>), regenerated nightly.</p>
     <table>
-      <thead><tr><th>Case</th><th>Patient</th><th>Species</th><th>Proposed treatment</th><th>Jurisdiction</th><th>Clinician license</th><th>Treated?</th><th>Last op status</th></tr></thead>
+      <thead><tr><th>Resource</th><th>Location</th><th>Facility-resource status</th><th>Last coordination status</th></tr></thead>
       <tbody>
-        <tr><td>case-1</td><td>Farm bovine #A-12 (owner: Sakura Ranch)</td><td>bovine</td><td>penicillin-g-procaine</td><td>JPN</td><td><span class="ok">current</span></td><td><span class="ok">treated</span></td><td><span class="ok">committed</span></td></tr>
-        <tr><td>case-2</td><td>Rex (owner: Atlantis Doe)</td><td>canine</td><td>amoxicillin</td><td>ATL</td><td><span class="ok">current</span></td><td><span class="muted">not yet</span></td><td><span class="critical">HARD hold &middot; no-spec-basis</span></td></tr>
-        <tr><td>case-3</td><td>ハチ公 (owner: 鈴木一郎)</td><td>canine</td><td>penicillin</td><td>JPN</td><td><span class="ok">current</span></td><td><span class="muted">not yet</span></td><td><span class="critical">HARD hold &middot; contraindicated</span></td></tr>
-        <tr><td>case-4</td><td>ポチ (owner: 田中花子)</td><td>canine</td><td>amoxicillin</td><td>JPN</td><td><span class="err">not current</span></td><td><span class="muted">not yet</span></td><td><span class="critical">HARD hold &middot; credential-not-current</span></td></tr>
-        <tr><td>case-5</td><td>Farm bovine #B-07 (owner: 佐藤牧場)</td><td>bovine</td><td>penicillin-g-procaine</td><td>JPN</td><td><span class="ok">current</span></td><td><span class="muted">not yet</span></td><td><span class="muted">no activity</span></td></tr>
+        <tr><td>exam-1</td><td>Exam Room 1</td><td><span class="ok">registered &amp; verified</span></td><td><span class="critical">HARD hold &middot; scope-excluded</span></td></tr>
+        <tr><td>exam-3</td><td>Exam Room 3 (intake)</td><td><span class="warn">registered, unverified</span></td><td><span class="critical">HARD hold &middot; unverified resource</span></td></tr>
+        <tr><td>kennel-12</td><td>Boarding Ward, Run 12</td><td><span class="ok">registered &amp; verified</span></td><td><span class="critical">HARD hold &middot; effect-not-propose</span></td></tr>
       </tbody>
     </table>
   </section>
   <section class="card">
-    <h2>Action gate (Veterinary Care Governor)</h2>
-    <p class="muted">HARD holds cannot be overridden. A jurisdiction's licensing requirements, a case's own contraindications, its food-safety withdrawal-period sufficiency and its clinician's license currency are all independently recomputed, never trusted from the advisor's rationale.</p>
+    <h2>Action gate (VetOps Governor)</h2>
+    <p class="muted">HARD holds cannot be overridden by a human approver. Diagnosis, treatment, medication/vaccine/anesthesia administration, surgical/dental procedures, euthanasia and license/compliance-enforcement territory are permanently out of scope — see governor scope-exclusion.</p>
     <table>
       <thead><tr><th>Op</th><th>Gate</th></tr></thead>
       <tbody>
-        <tr><td><code>:case/intake</code></td><td><span class="ok">phase-3 auto when clean</span></td></tr>
-        <tr><td><code>:jurisdiction/assess</code></td><td><span class="warn">ALWAYS human approval &middot; requires an OFFICIAL spec-basis citation from <code>veterinary.facts</code> &middot; a jurisdiction with no catalog entry is a permanent HARD block, no phase or approval can ever override it</span></td></tr>
-        <tr><td><code>:credential/screen</code></td><td><span class="warn">ALWAYS human approval when clean &middot; a lapsed veterinarian license (self-reported or already on file) is an immediate, un-overridable HARD hold</span></td></tr>
-        <tr><td><code>:treatment/administer</code></td><td><span class="warn">ALWAYS human approval, at every phase &middot; independently re-verifies contraindications, food-safety withdrawal-period sufficiency, evidence completeness, license currency and double-administration &mdash; any one of the five is a permanent HARD block</span></td></tr>
+        <tr><td><code>:coordinate-appointment-scheduling</code></td><td><span class="ok">phase-3 auto when clean</span></td></tr>
+        <tr><td><code>:coordinate-boarding-assignment</code></td><td><span class="ok">phase-3 auto when clean</span></td></tr>
+        <tr><td><code>:coordinate-supply-request</code></td><td><span class="ok">phase-3 auto when clean</span></td></tr>
+        <tr><td><code>:schedule-staff-shift-proposal</code></td><td><span class="ok">phase-3 auto when clean</span></td></tr>
+        <tr><td><code>:flag-safety-concern</code></td><td><span class="warn">ALWAYS human approval &middot; never auto, any phase</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -52,16 +51,16 @@ code { font-size: 12px; background: #f4f4f4; padding: 1px 4px; border-radius: 3p
     <h2>Audit ledger (this run)</h2>
     <p class="muted">Append-only decision-fact log — every proposal, hold and commit this scenario produced.</p>
     <table>
-      <thead><tr><th>Fact</th><th>Op</th><th>Subject</th><th>Basis</th></tr></thead>
+      <thead><tr><th>Fact</th><th>Op</th><th>Resource</th><th>Basis</th></tr></thead>
       <tbody>
-        <tr><td>committed</td><td><code>intake</code></td><td>case-1</td><td>id, patient</td></tr>
-        <tr><td>committed</td><td><code>assess</code></td><td>case-1</td><td>獣医師法 (Veterinarians Act), https://www.maff.go.jp/</td></tr>
-        <tr><td>committed</td><td><code>screen</code></td><td>case-1</td><td>credential-check</td></tr>
-        <tr><td>committed</td><td><code>administer</code></td><td>case-1</td><td>case-1</td></tr>
-        <tr><td>governor-hold</td><td><code>assess</code></td><td>case-2</td><td>no-spec-basis</td></tr>
-        <tr><td>committed</td><td><code>assess</code></td><td>case-3</td><td>獣医師法 (Veterinarians Act), https://www.maff.go.jp/</td></tr>
-        <tr><td>governor-hold</td><td><code>administer</code></td><td>case-3</td><td>contraindicated</td></tr>
-        <tr><td>governor-hold</td><td><code>screen</code></td><td>case-4</td><td>credential-not-current</td></tr>
+        <tr><td>committed</td><td><code>coordinate-appointment-scheduling</code></td><td>exam-1</td><td>exam-1</td></tr>
+        <tr><td>committed</td><td><code>coordinate-boarding-assignment</code></td><td>kennel-12</td><td>kennel-12</td></tr>
+        <tr><td>committed</td><td><code>coordinate-supply-request</code></td><td>exam-1</td><td>exam-1</td></tr>
+        <tr><td>committed</td><td><code>schedule-staff-shift-proposal</code></td><td>kennel-12</td><td>kennel-12</td></tr>
+        <tr><td>committed</td><td><code>flag-safety-concern</code></td><td>exam-1</td><td>exam-1</td></tr>
+        <tr><td>governor-hold</td><td><code>coordinate-appointment-scheduling</code></td><td>exam-3</td><td>resource-unverified</td></tr>
+        <tr><td>governor-hold</td><td><code>coordinate-appointment-scheduling</code></td><td>exam-1</td><td>scope-excluded</td></tr>
+        <tr><td>governor-hold</td><td><code>coordinate-boarding-assignment</code></td><td>kennel-12</td><td>effect-not-propose</td></tr>
       </tbody>
     </table>
   </section>

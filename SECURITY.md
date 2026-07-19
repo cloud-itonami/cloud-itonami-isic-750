@@ -10,7 +10,7 @@ Report privately before opening public issues for:
 - credential exposure
 - real customer or engagement-record data exposure
 - authorization bypass
-- Veterinary Care Governor bypass
+- VetOps Governor bypass
 - audit-ledger tampering
 - over-disclosure in reports or exports
 

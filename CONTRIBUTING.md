@@ -1,6 +1,6 @@
 # Contributing
 
-`cloud-itonami-isic-7500` accepts contributions to the OSS blueprint, capability
+`cloud-itonami-isic-750` accepts contributions to the OSS blueprint, capability
 bindings, policy tests, documentation and operator model.
 
 ## Development
@@ -9,7 +9,7 @@ This repo holds the business blueprint and operator contracts. See
 `kotoba-lang/industry` for the technology-stack resolution.
 
 ```bash
-clojure -M:test
+clojure -M:dev:test
 clojure -M:lint
 ```
 
@@ -18,9 +18,13 @@ Keep changes small and include tests for any capability-layer change.
 ## Rules
 
 - Do not commit real customer records, credentials, or personal data.
-- Keep administering a treatment, prescription or procedure behind the Veterinary Care Governor.
-- Treat this vertical as high-risk: add tests for spec-basis, delivery,
-  disclosure and audit logging.
+- Keep this actor's scope to administrative/facility coordination only --
+  diagnosis, treatment, medication/vaccine/anesthesia administration,
+  surgical/dental procedures and euthanasia decisions belong behind
+  `cloud-itonami-isic-7500`'s Veterinary Care Governor, never this repo's
+  VetOps Governor.
+- Treat scope-exclusion as high-risk: add tests for any new op or any
+  change to `vetops.governor/scope-excluded-terms`.
 - Document any new business-model or operator assumption in `docs/`.
 
 ## Pull Requests
